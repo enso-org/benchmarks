@@ -11,17 +11,17 @@ measure = ~act -> label -> iter_size -> num_iters ->
         x1 = System.nano_time
         Runtime.no_inline act
         x2 = System.nano_time
-        x2 - x1
+        (x2 - x1) / 1000000
     iteration = it_num ->
         act_it_num = num_iters - it_num
         res = iter_size.times single_call
-        avg = Bench.avg_list res / 1000000
+        avg = Bench.avg_list res
         IO.println "enso, "+label+", "+act_it_num.to_text+", "+avg.to_text
         avg
     num_iters.times iteration
 
-sum_rec : Integer -> Integer
-sum_rec n =
+sum : Integer -> Integer
+sum n =
     go acc i =
         if i > n then acc else
             @Tail_Call go acc+i i+1
@@ -85,9 +85,9 @@ main =
     # n_iters = 10
     size = 100 # TODO FIXME temporary workaround to quickly test
     depth = 4
-    iter_size = 1
+    iter_size = 2
     n_iters = 2
-    here.measure (here.sum_rec size) "sum_rec" iter_size n_iters
+    here.measure (here.sum size) "sum" iter_size n_iters
 
     here.measure (here.alloc_vector size) "alloc_vector" iter_size n_iters
     vec = here.alloc_vector size
