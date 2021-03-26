@@ -3,16 +3,13 @@ import time
 def print_header():
     print("language, benchmark, run_id, time")
 
-def measure(act, label, iter_size, num_iters):
+def measure(act, label, num_iters):
     for it_num in range(num_iters):
-        iters = []
-        for i in range(iter_size):
-            x1 = time.perf_counter()
-            act()
-            x2 = time.perf_counter()
-            iters.append((x2 - x1)  * 1000.0)
-        avg = sum(iters) / len(iters)
-        print("python, " + label + ", " + str(it_num) + ", " + str(avg))
+        x1 = time.perf_counter()
+        act()
+        x2 = time.perf_counter()
+        diff = (x2 - x1)  * 1000.0
+        print("python, " + label + ", " + str(it_num) + ", " + str(diff))
 
 def sum_bench(n):
     acc = 0
@@ -80,25 +77,23 @@ if __name__ == "__main__":
     print_header()
     # size = 100000000
     # depth = 25
-    # iter_size = 100
     # n_iters = 10
     size = 100 # TODO FIXME temporary workaround to quickly test
     depth = 4
-    iter_size = 2
     n_iters = 2
 
-    measure(lambda: time.sleep(0.1), "100ms", 10, 1)
+    measure(lambda: time.sleep(0.1), "100ms", 10)
 
-    measure(lambda: sum_bench(size), "sum", iter_size, n_iters)
+    measure(lambda: sum_bench(size), "sum", n_iters)
 
-    measure(lambda: alloc_vector(size), "alloc_vector", iter_size, n_iters)
+    measure(lambda: alloc_vector(size), "alloc_vector", n_iters)
     vec = alloc_vector(size)
-    measure(lambda: sum_vector(vec), "sum_vector", iter_size, n_iters)
+    measure(lambda: sum_vector(vec), "sum_vector", n_iters)
 
-    measure(lambda: alloc_list(size), "alloc_list", iter_size, n_iters)
+    measure(lambda: alloc_list(size), "alloc_list", n_iters)
     lst = alloc_list(size)
-    measure(lambda: sum_list(lst), "sum_list", iter_size, n_iters)
+    measure(lambda: sum_list(lst), "sum_list", n_iters)
 
-    measure(lambda: alloc_full_tree(depth), "alloc_full_tree", iter_size, n_iters)
+    measure(lambda: alloc_full_tree(depth), "alloc_full_tree", n_iters)
     tree = alloc_full_tree(depth)
-    measure(lambda: sum_tree(tree), "sum_tree", iter_size, n_iters)
+    measure(lambda: sum_tree(tree), "sum_tree", n_iters)

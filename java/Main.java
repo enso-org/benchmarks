@@ -5,17 +5,13 @@ public class Main {
         System.out.println("language, benchmark, run_id, time");
     }
 
-    public static void measure(Supplier<?> act, String label, int iter_size, int num_iters) {
+    public static void measure(Supplier<?> act, String label, int num_iters) {
         for (int it_num = 0; it_num < num_iters; it_num++) {
-            double time_sum = 0;
-            for (int i = 0; i < iter_size; i++) {
-                double x1 = System.nanoTime();
-                act.get();
-                double x2 = System.nanoTime();
-                time_sum += (x2 - x1) / 1000000.0;
-            }
-            double avg = time_sum / ((double) iter_size);
-            System.out.println("java, " + label + ", " + it_num + ", " + avg);
+            double x1 = System.nanoTime();
+            act.get();
+            double x2 = System.nanoTime();
+            double diff = (x2 - x1) / 1000000.0;
+            System.out.println("java, " + label + ", " + it_num + ", " + diff);
         }
     }
 
@@ -134,28 +130,26 @@ public class Main {
         printHeader();
         // size = 100000000
         // depth = 25
-        // iter_size = 100
         // n_iters = 10
         int size = 100; // TODO FIXME temporary workaround to quickly test
         int depth = 4;
-        int iter_size = 2;
         int n_iters = 2;
 
-        measure(() -> sleep(), "100ms", 1, 1);
+        measure(() -> sleep(), "100ms", 10);
 
-        measure(() -> sum(size), "sum", iter_size, n_iters);
+        measure(() -> sum(size), "sum", n_iters);
 
-        measure(() -> allocVector(size), "alloc_vector", iter_size, n_iters);
+        measure(() -> allocVector(size), "alloc_vector", n_iters);
         var vec = allocVector(size);
-        measure(() -> sumVector(vec), "sum_vector", iter_size, n_iters);
+        measure(() -> sumVector(vec), "sum_vector", n_iters);
 
 
-        measure(() -> allocList(size), "alloc_list", iter_size, n_iters);
+        measure(() -> allocList(size), "alloc_list", n_iters);
         var list = allocList(size);
-        measure(() -> sumList(list), "sum_list", iter_size, n_iters);
+        measure(() -> sumList(list), "sum_list", n_iters);
 
-        measure(() -> allocFullTree(depth), "alloc_tree", iter_size, n_iters);
+        measure(() -> allocFullTree(depth), "alloc_tree", n_iters);
         var tree = allocFullTree(depth);
-        measure(() -> sumTree(tree), "sum_tree", iter_size, n_iters);
+        measure(() -> sumTree(tree), "sum_tree", n_iters);
     }
 }

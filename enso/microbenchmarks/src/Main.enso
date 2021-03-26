@@ -8,18 +8,14 @@ print_header =
     IO.println "language, benchmark, run_id, time"
 
 # This modifies the standard measure function to print in CSV format
-measure = ~act -> label -> iter_size -> num_iters ->
-    single_call = _ ->
+measure = ~act -> label -> num_iters ->
+    iteration = it_num ->
+        act_it_num = num_iters - it_num
         x1 = System.nano_time
         Runtime.no_inline act
         x2 = System.nano_time
-        (x2 - x1) / 1000000
-    iteration = it_num ->
-        act_it_num = num_iters - it_num
-        res = iter_size.times single_call
-        avg = Bench.avg_list res
-        IO.println "enso, "+label+", "+act_it_num.to_text+", "+avg.to_text
-        avg
+        res = (x2 - x1) / 1000000
+        IO.println "enso, "+label+", "+act_it_num.to_text+", "+res.to_text
     num_iters.times iteration
 
 sum : Integer -> Integer
@@ -83,25 +79,23 @@ main =
     here.print_header
     # size = 100000000
     # depth = 25
-    # iter_size = 100
     # n_iters = 10
     size = 100 # TODO FIXME temporary workaround to quickly test
     depth = 4
-    iter_size = 2
     n_iters = 2
 
-    here.measure (Thread.sleep 100) "100ms" 10 1
+    here.measure (Thread.sleep 100) "100ms" 10
 
-    here.measure (here.sum size) "sum" iter_size n_iters
+    here.measure (here.sum size) "sum" n_iters
 
-    here.measure (here.alloc_vector size) "alloc_vector" iter_size n_iters
+    here.measure (here.alloc_vector size) "alloc_vector" n_iters
     vec = here.alloc_vector size
-    here.measure (here.sum_vector vec) "sum_vector" iter_size n_iters
+    here.measure (here.sum_vector vec) "sum_vector" n_iters
 
-    here.measure (here.alloc_list size) "alloc_list" iter_size n_iters
+    here.measure (here.alloc_list size) "alloc_list" n_iters
     list = here.alloc_list size
-    here.measure (here.sum_list list) "sum_list" iter_size n_iters
+    here.measure (here.sum_list list) "sum_list" n_iters
 
-    here.measure (here.alloc_full_tree depth) "alloc_full_tree" iter_size n_iters
+    here.measure (here.alloc_full_tree depth) "alloc_full_tree" n_iters
     tree = here.alloc_full_tree depth
-    here.measure (here.sum_tree tree) "sum_tree" iter_size n_iters
+    here.measure (here.sum_tree tree) "sum_tree" n_iters
