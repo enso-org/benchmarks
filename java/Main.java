@@ -5,8 +5,8 @@ public class Main {
         System.out.println("language, benchmark, run_id, time");
     }
 
-    public static void measure(Supplier<?> act, String label, int num_iters) {
-        for (int it_num = 0; it_num < num_iters; it_num++) {
+    public static void measure(Supplier<?> act, String label, long num_iters) {
+        for (long it_num = 0; it_num < num_iters; it_num++) {
             double x1 = System.nanoTime();
             act.get();
             double x2 = System.nanoTime();
@@ -15,9 +15,9 @@ public class Main {
         }
     }
 
-    public static int sum(int n) {
-        int acc = 0;
-        int i = 1;
+    public static long sum(long n) {
+        long acc = 0;
+        long i = 1;
         while (i <= n) {
             acc += i;
             i++;
@@ -25,23 +25,23 @@ public class Main {
         return acc;
     }
 
-    public static int[] allocVector(int n) {
-        var array = new int[n];
+    public static long[] allocVector(int n) {
+        var array = new long[n];
         for (int i = 0; i < n; i++) {
             array[i] = i;
         }
         return array;
     }
 
-    public static int sumVector(int[] vec) {
-        int acc = 0;
+    public static long sumVector(long[] vec) {
+        long acc = 0;
         for (int i = 0; i < vec.length; i++) {
             acc += vec[i];
         }
         return acc;
     }
 
-    public static int sleep() {
+    public static long sleep() {
         try {
             Thread.sleep(100);
             return 0;
@@ -51,25 +51,25 @@ public class Main {
     }
 
     public static class Cons {
-        public final int head;
+        public final long head;
         public final Cons tail;
 
-        public Cons(int head, Cons tail) {
+        public Cons(long head, Cons tail) {
             this.head = head;
             this.tail = tail;
         }
     }
 
-    public static Cons allocList(int n) {
+    public static Cons allocList(long n) {
         Cons res = null;
-        for (int i = n; i >= 0; i--) {
+        for (long i = n; i >= 0; i--) {
             res = new Cons(i, res);
         }
         return res;
     }
 
-    public static int sumList(Cons list) {
-        int acc = 0;
+    public static long sumList(Cons list) {
+        long acc = 0;
         while (list != null) {
             acc += list.head;
             list = list.tail;
@@ -79,9 +79,9 @@ public class Main {
 
     public static class Tree {
         public final Tree left, right;
-        public final int elem;
+        public final long elem;
 
-        public Tree(Tree left, int elem, Tree right) {
+        public Tree(Tree left, long elem, Tree right) {
             this.left = left;
             this.elem = elem;
             this.right = right;
@@ -89,19 +89,19 @@ public class Main {
     }
 
     private static class TreeAllocator {
-        private final int depth;
-        private int ix = 0;
+        private final long depth;
+        private long ix = 0;
 
-        public TreeAllocator(int depth) {
+        public TreeAllocator(long depth) {
             this.depth = depth;
         }
 
-        private Tree go(int remainingDepth) {
+        private Tree go(long remainingDepth) {
             if (remainingDepth == 0) {
                 return null;
             } else {
                 Tree l = go(remainingDepth - 1);
-                int e = ix++;
+                long e = ix++;
                 Tree r = go(remainingDepth - 1);
                 return new Tree(l, e, r);
             }
@@ -112,17 +112,17 @@ public class Main {
         }
     }
 
-    public static Tree allocFullTree(int depth) {
+    public static Tree allocFullTree(long depth) {
         return (new TreeAllocator(depth)).allocate();
     }
 
-    public static int sumTree(Tree tree) {
+    public static long sumTree(Tree tree) {
         if (tree == null) {
             return 0;
         }
 
-        int l = sumTree(tree.left);
-        int r = sumTree(tree.right);
+        long l = sumTree(tree.left);
+        long r = sumTree(tree.right);
         return l + tree.elem + r;
     }
 
@@ -132,8 +132,8 @@ public class Main {
         // depth = 25
         // n_iters = 10
         int size = 100; // TODO FIXME temporary workaround to quickly test
-        int depth = 4;
-        int n_iters = 2;
+        long depth = 4;
+        long n_iters = 2;
 
         measure(() -> sleep(), "100ms", 10);
 

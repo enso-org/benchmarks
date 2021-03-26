@@ -24,6 +24,80 @@ function sum(n) {
     return acc;
 }
 
+function alloc_vector(n) {
+    let array = new Int32Array(n);
+    for (let i = 0; i < n; ++i) {
+        array[i] = i;
+    }
+    return array;
+}
+
+function sum_vector(vec) {
+    let N = vec.length;
+    let acc = 0;
+    for (let i = 0; i < N; ++i) {
+        acc += vec[i];
+    }
+    return acc;
+}
+
+class Cons {
+    constructor(head, tail) {
+        this.head = head;
+        this.tail = tail;
+    }
+}
+
+function alloc_list(n) {
+    let res = null;
+    for (let i = n; i >= 0; i--) {
+        res = new Cons(i, res);
+    }
+    return res;
+}
+
+function sum_list(list) {
+    let acc = 0;
+    while (list != null) {
+        acc += list.head;
+        list = list.tail;
+    }
+    return acc;
+}
+
+class Tree {
+    constructor(left, elem, right) {
+        this.left = left;
+        this.elem = elem;
+        this.right = right;
+    }
+}
+
+function alloc_full_tree(depth) {
+    let ix = 0;
+    function go(remaining_depth) {
+        if (remaining_depth == 0) {
+            return null;
+        } else {
+            let l = go(remaining_depth - 1);
+            let e = ix++;
+            let r = go(remaining_depth - 1);
+            return new Tree(l, e, r);
+        }
+    }
+    return go(depth);
+}
+
+function sum_tree(tree) {
+    if (tree === null) {
+        return 0;
+    } else {
+        let l = sum_tree(tree.left);
+        let r = sum_tree(tree.right);
+        return l + tree.elem + r;
+    }
+}
+
 printHeader();
 
 // size = 100000000
@@ -38,3 +112,16 @@ measure(function() {
 }, "100ms", 10);
 
 measure(function() { return sum(size); }, "sum", n_iters);
+
+measure(function() { return alloc_vector(size); }, "alloc_vector", n_iters);
+let vec = alloc_vector(size);
+measure(function() { return sum_vector(vec); }, "sum_vector", n_iters);
+
+measure(function() { return alloc_list(size); }, "alloc_list", n_iters);
+let list = alloc_list(size);
+measure(function() { return sum_list(list); }, "sum_list", n_iters);
+
+measure(function() { return alloc_full_tree(depth); }, "alloc_tree", n_iters);
+let tree = alloc_full_tree(depth);
+measure(function() { return sum_tree(tree); }, "sum_tree", n_iters);
+
