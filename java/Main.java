@@ -15,8 +15,8 @@ public class Main {
         }
     }
 
-    public static long sum(int n) {
-        long acc = 0;
+    public static int sum(int n) {
+        int acc = 0;
         int i = 1;
         while (i <= n) {
             acc += i;
@@ -33,20 +33,20 @@ public class Main {
         return array;
     }
 
-    public static long sumVector(int[] vec) {
-        long acc = 0;
+    public static int sumVector(int[] vec) {
+        int acc = 0;
         for (int i = 0; i < vec.length; i++) {
             acc += vec[i];
         }
         return acc;
     }
 
-    public static long sleep() {
+    public static int sleep() {
         try {
             Thread.sleep(100);
             return 0;
         } catch (InterruptedException e) {
-            throw new RuntimeException("Unexpected longerrupt", e);
+            throw new RuntimeException("Unexpected interrupt", e);
         }
     }
 
@@ -68,8 +68,8 @@ public class Main {
         return res;
     }
 
-    public static long sumList(Cons list) {
-        long acc = 0;
+    public static int sumList(Cons list) {
+        int acc = 0;
         while (list != null) {
             acc += list.head;
             list = list.tail;
@@ -116,13 +116,13 @@ public class Main {
         return (new TreeAllocator(depth)).allocate();
     }
 
-    public static long sumTree(Tree tree) {
+    public static int sumTree(Tree tree) {
         if (tree == null) {
             return 0;
         }
 
-        long l = sumTree(tree.left);
-        long r = sumTree(tree.right);
+        int l = sumTree(tree.left);
+        int r = sumTree(tree.right);
         return l + tree.elem + r;
     }
 
