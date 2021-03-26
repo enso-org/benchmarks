@@ -1,0 +1,8 @@
+polyglot java import java.lang.Thread
+polyglot java import java.lang.Integer
+
+sleep millis =
+    Thread.sleep millis
+
+parse_int str =
+    Integer.parseInt str

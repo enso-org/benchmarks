@@ -10,7 +10,7 @@ public class Main {
             double x1 = System.nanoTime();
             act.get();
             double x2 = System.nanoTime();
-            double diff = (x2 - x1) / 1000000.0;
+            double diff = (x2 - x1) / 1.0e6;
             System.out.println("java, " + label + ", " + it_num + ", " + diff);
         }
     }
@@ -128,12 +128,9 @@ public class Main {
 
     public static void main(String[] args) {
         printHeader();
-        // size = 100000000
-        // depth = 25
-        // n_iters = 10
-        int size = 100; // TODO FIXME temporary workaround to quickly test
-        long depth = 4;
-        long n_iters = 2;
+        int size = Integer.parseInt(System.getenv("BENCH_SIZE"));
+        long depth = Integer.parseInt(System.getenv("BENCH_DEPTH"));
+        long n_iters = Integer.parseInt(System.getenv("BENCH_ITER"));
 
         measure(() -> sleep(), "100ms", 10);
 
@@ -148,7 +145,7 @@ public class Main {
         var list = allocList(size);
         measure(() -> sumList(list), "sum_list", n_iters);
 
-        measure(() -> allocFullTree(depth), "alloc_tree", n_iters);
+        measure(() -> allocFullTree(depth), "alloc_full_tree", n_iters);
         var tree = allocFullTree(depth);
         measure(() -> sumTree(tree), "sum_tree", n_iters);
     }

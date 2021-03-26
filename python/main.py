@@ -1,4 +1,4 @@
-import time
+import time, os
 
 def print_header():
     print("language, benchmark, run_id, time")
@@ -75,12 +75,9 @@ def sum_tree(tree):
 
 if __name__ == "__main__":
     print_header()
-    # size = 100000000
-    # depth = 25
-    # n_iters = 10
-    size = 100 # TODO FIXME temporary workaround to quickly test
-    depth = 4
-    n_iters = 2
+    size = int(os.getenv("BENCH_SIZE"))
+    depth = int(os.getenv("BENCH_DEPTH"))
+    n_iters = int(os.getenv("BENCH_ITER"))
 
     measure(lambda: time.sleep(0.1), "100ms", 10)
 

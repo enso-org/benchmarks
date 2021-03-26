@@ -9,7 +9,7 @@ function measure(act, label, num_iters) {
         let x2 = process.hrtime();
         let diff_seconds = x2[0] - x1[0];
         let diff_nanos = x2[1] - x1[1];
-        let diff = (diff_seconds * 1000.0) + (diff_nanos / 1000000.0);
+        let diff = (diff_seconds * 1000.0) + (diff_nanos / 1.0e6);
         console.log("js, " + label + ", " + it_num + ", " + diff.toFixed(10));
     }
 }
@@ -100,12 +100,9 @@ function sum_tree(tree) {
 
 printHeader();
 
-// size = 100000000
-// depth = 25
-// n_iters = 10
-let size = 1000; // TODO FIXME temporary workaround to quickly test
-let depth = 4;
-let n_iters = 2;
+let size = parseInt(process.env.BENCH_SIZE);
+let depth = parseInt(process.env.BENCH_DEPTH);
+let n_iters = parseInt(process.env.BENCH_ITER);
 
 measure(function() {
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
@@ -121,7 +118,7 @@ measure(function() { return alloc_list(size); }, "alloc_list", n_iters);
 let list = alloc_list(size);
 measure(function() { return sum_list(list); }, "sum_list", n_iters);
 
-measure(function() { return alloc_full_tree(depth); }, "alloc_tree", n_iters);
+measure(function() { return alloc_full_tree(depth); }, "alloc_full_tree", n_iters);
 let tree = alloc_full_tree(depth);
 measure(function() { return sum_tree(tree); }, "sum_tree", n_iters);
 

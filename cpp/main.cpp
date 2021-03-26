@@ -1,5 +1,6 @@
 #include <chrono>
 #include <cstdint>
+#include <cstdlib>
 #include <functional>
 #include <iostream>
 #include <string>
@@ -15,7 +16,7 @@ void measure(std::function<void(void)> act, std::string label, int64_t num_iters
     act();
     auto x2 = std::chrono::steady_clock::now();
     std::chrono::nanoseconds diff = x2 - x1;
-    double millis = diff.count() / 1000000.0;
+    double millis = diff.count() / 1.0e6;
     std::cout << "cpp, " << label << ", " << it_num << ", " << millis << std::endl;
   }
 }
@@ -101,12 +102,13 @@ int64_t sum_tree(Tree* tree) {
 
 int main() {
   print_header();
-  // size = 100000000
-  // depth = 25
-  // n_iters = 10
-  int64_t size = 100; //TODO FIXME temporary workaround to quickly test
-  int64_t depth = 4;
-  int64_t n_iters = 2;
+  int64_t size = std::stoi(std::getenv("BENCH_SIZE"));
+  int64_t depth = std::stoi(std::getenv("BENCH_DEPTH"));
+  int64_t n_iters = std::stoi(std::getenv("BENCH_ITER"));
+
+  std::cerr << "Size = " << size << std::endl;
+  std::cerr << "Depth = " << depth << std::endl;
+  std::cerr << "Iterations = " << n_iters << std::endl;
 
   measure([]() { std::this_thread::sleep_for(std::chrono::milliseconds(100)); }, "100ms", 10);
 
@@ -120,7 +122,7 @@ int main() {
   auto list = alloc_list(size);
   measure([&]() { sum_list(list); }, "sum_list", n_iters);
 
-  measure([&]() { alloc_full_tree(depth); }, "alloc_tree", n_iters);
+  measure([&]() { alloc_full_tree(depth); }, "alloc_full_tree", n_iters);
   auto tree = alloc_full_tree(depth);
   measure([&]() { sum_tree(tree); }, "sum_tree", n_iters);
 }

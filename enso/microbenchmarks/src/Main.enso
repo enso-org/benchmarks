@@ -1,8 +1,9 @@
 from Standard.Base import all
 
 import Standard.Test.Bench
+import Standard.Base.System.Environment
 
-polyglot java import java.lang.Thread
+import Microbenchmarks.Helpers
 
 print_header =
     IO.println "language, benchmark, run_id, time"
@@ -77,14 +78,11 @@ sum_tree tree = case tree of
 
 main =
     here.print_header
-    # size = 100000000
-    # depth = 25
-    # n_iters = 10
-    size = 100 # TODO FIXME temporary workaround to quickly test
-    depth = 4
-    n_iters = 2
+    size = Helpers.parse_int (Environment.get "BENCH_SIZE")
+    depth = Helpers.parse_int (Environment.get "BENCH_DEPTH")
+    n_iters = Helpers.parse_int (Environment.get "BENCH_ITER")
 
-    here.measure (Thread.sleep 100) "100ms" 10
+    here.measure (Helpers.sleep 100) "100ms" 10
 
     here.measure (here.sum size) "sum" n_iters
 
