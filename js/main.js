@@ -40,4 +40,8 @@ let depth = 4;
 let iter_size = 2;
 let n_iters = 2;
 
+measure(function() {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+}, "100ms", 10, 1);
+
 measure(function() { return sum(size); }, "sum", iter_size, n_iters);

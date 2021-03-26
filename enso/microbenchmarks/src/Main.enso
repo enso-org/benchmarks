@@ -2,6 +2,8 @@ from Standard.Base import all
 
 import Standard.Test.Bench
 
+polyglot java import java.lang.Thread
+
 print_header =
     IO.println "language, benchmark, run_id, time"
 
@@ -87,6 +89,9 @@ main =
     depth = 4
     iter_size = 2
     n_iters = 2
+
+    here.measure (Thread.sleep 100) "100ms" 10 1
+
     here.measure (here.sum size) "sum" iter_size n_iters
 
     here.measure (here.alloc_vector size) "alloc_vector" iter_size n_iters

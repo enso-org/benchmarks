@@ -1,24 +1,21 @@
 #!/bin/bash
 set -xe
 
-cd enso
-enso run microbenchmarks
-cd ..
+rm -rf results
+mkdir results
 
-cd python
-python3 main.py
-cd ..
+enso run enso/microbenchmarks | tee results/enso.csv
+
+python3 python/main.py | tee results/python.csv
 
 cd java
 javac Main.java
-java Main
+java Main | tee ../results/java.csv
 cd ..
 
 cd cpp
-g++ main.cpp -o main
-./main
+g++ main.cpp -o main.x64
+./main.x64 | tee ../results/cpp.csv
 cd ..
 
-cd js
-node main.js
-cd ..
+node js/main.js | tee results/js.csv

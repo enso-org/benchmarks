@@ -37,13 +37,44 @@ class Cons:
         self.tail = tail
 
 def alloc_list(n):
-    r = Nil()
+    r = None
     for i in range(n, -1, -1):
-        r = List(i, r)
+        r = Cons(i, r)
     return r
 
 def sum_list(lst):
-    pass
+    acc = 0
+    while lst is not None:
+        acc += lst.head
+        lst = lst.tail
+    return acc
+
+class Tree:
+    def __init__(self, left, elem, right):
+        self.left = left
+        self.elem = elem
+        self.right = right
+
+def alloc_full_tree(depth):
+    ix = 0
+    def go(remaining_depth):
+        nonlocal ix
+        if remaining_depth == 0:
+            return None
+        else:
+            l = go(remaining_depth - 1)
+            e = ix
+            ix += 1
+            r = go(remaining_depth - 1)
+            return Tree(l, e, r)
+    return go(depth)
+
+def sum_tree(tree):
+    if tree is None:
+        return 0
+    l = sum_tree(tree.left)
+    r = sum_tree(tree.right)
+    return l + tree.elem + r
 
 if __name__ == "__main__":
     print_header()
@@ -56,10 +87,18 @@ if __name__ == "__main__":
     iter_size = 2
     n_iters = 2
 
-    measure(lambda: time.sleep(0.1), "100ms", 1, 1)
+    measure(lambda: time.sleep(0.1), "100ms", 10, 1)
 
     measure(lambda: sum_bench(size), "sum", iter_size, n_iters)
 
     measure(lambda: alloc_vector(size), "alloc_vector", iter_size, n_iters)
     vec = alloc_vector(size)
     measure(lambda: sum_vector(vec), "sum_vector", iter_size, n_iters)
+
+    measure(lambda: alloc_list(size), "alloc_list", iter_size, n_iters)
+    lst = alloc_list(size)
+    measure(lambda: sum_list(lst), "sum_list", iter_size, n_iters)
+
+    measure(lambda: alloc_full_tree(depth), "alloc_full_tree", iter_size, n_iters)
+    tree = alloc_full_tree(depth)
+    measure(lambda: sum_tree(tree), "sum_tree", iter_size, n_iters)

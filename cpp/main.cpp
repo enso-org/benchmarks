@@ -2,6 +2,7 @@
 #include <functional>
 #include <iostream>
 #include <string>
+#include <thread>
 
 void print_header() {
   std::cout << "language, benchmark, run_id, time" << std::endl;
@@ -44,5 +45,7 @@ int main() {
   int iter_size = 2;
   int n_iters = 2;
 
-  measure([=]() { sum(size); }, "sum", iter_size, n_iters);
+  measure([]() { std::this_thread::sleep_for(std::chrono::milliseconds(100)); }, "100ms", 10, 1);
+
+  measure([&]() { sum(size); }, "sum", iter_size, n_iters);
 }
