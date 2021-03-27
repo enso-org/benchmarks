@@ -1,0 +1,648 @@
+# JMH version: 1.23
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+8-jvmci-21.0-b06
+# VM invoker: /home/ubuntu/graalvm-ce-java11-21.0.0.2/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1 -Dpolyglot.engine.IterativePartialEscape=true -Dpolyglot.engine.BackgroundCompilation=false -Dgraalvm.locatorDisabled=true --upgrade-module-path=/home/ubuntu/enso/engine/runtime/build-cache/truffle-api.jar
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 5000 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_full_tree
+
+# Run progress: 0.00% complete, ETA 00:52:30
+# Fork: 1 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 67499.960 ms/op
+# Warmup Iteration   2: 34275.911 ms/op
+# Warmup Iteration   3: 2159.077 ms/op
+# Warmup Iteration   4: 14836.172 ms/op
+# Warmup Iteration   5: 8353.551 ms/op
+# Warmup Iteration   6: 16090.673 ms/op
+# Warmup Iteration   7: 1132.682 ms/op
+# Warmup Iteration   8: 132.280 ms/op
+# Warmup Iteration   9: 71.101 ms/op
+# Warmup Iteration  10: 68.374 ms/op
+Iteration   1: 68.546 ms/op
+Iteration   2: 67.131 ms/op
+Iteration   3: 68.610 ms/op
+Iteration   4: 69.697 ms/op
+Iteration   5: 67.850 ms/op
+Iteration   6: 68.192 ms/op
+Iteration   7: 68.151 ms/op
+Iteration   8: 68.033 ms/op
+Iteration   9: 1175.679 ms/op
+Iteration  10: 74.346 ms/op
+
+# Run progress: 4.76% complete, ETA 01:49:21
+# Fork: 2 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 68412.653 ms/op
+# Warmup Iteration   2: 34228.302 ms/op
+# Warmup Iteration   3: 2202.345 ms/op
+# Warmup Iteration   4: 14885.454 ms/op
+# Warmup Iteration   5: 8334.397 ms/op
+# Warmup Iteration   6: 16105.473 ms/op
+# Warmup Iteration   7: 1156.580 ms/op
+# Warmup Iteration   8: 127.326 ms/op
+# Warmup Iteration   9: 69.792 ms/op
+# Warmup Iteration  10: 66.038 ms/op
+Iteration   1: 65.787 ms/op
+Iteration   2: 65.957 ms/op
+Iteration   3: 65.632 ms/op
+Iteration   4: 65.660 ms/op
+Iteration   5: 65.754 ms/op
+Iteration   6: 65.620 ms/op
+Iteration   7: 65.201 ms/op
+Iteration   8: 447.246 ms/op
+Iteration   9: 79.173 ms/op
+Iteration  10: 79.597 ms/op
+
+# Run progress: 9.52% complete, ETA 01:44:31
+# Fork: 3 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 67294.320 ms/op
+# Warmup Iteration   2: 33874.360 ms/op
+# Warmup Iteration   3: 2186.637 ms/op
+# Warmup Iteration   4: 14668.111 ms/op
+# Warmup Iteration   5: 8241.460 ms/op
+# Warmup Iteration   6: 15856.157 ms/op
+# Warmup Iteration   7: 1156.720 ms/op
+# Warmup Iteration   8: 133.690 ms/op
+# Warmup Iteration   9: 69.821 ms/op
+# Warmup Iteration  10: 68.364 ms/op
+Iteration   1: 68.158 ms/op
+Iteration   2: 66.389 ms/op
+Iteration   3: 66.439 ms/op
+Iteration   4: 65.922 ms/op
+Iteration   5: 65.965 ms/op
+Iteration   6: 65.815 ms/op
+Iteration   7: 66.023 ms/op
+Iteration   8: 66.020 ms/op
+Iteration   9: 6157.273 ms/op
+Iteration  10: 77.096 ms/op
+
+
+Result "org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_full_tree":
+  320.899 ±(99.9%) 749.870 ms/op [Average]
+  (min, avg, max) = (65.201, 320.899, 6157.273), stdev = 1122.370
+  CI (99.9%): [≈ 0, 1070.769] (assumes normal distribution)
+
+
+# JMH version: 1.23
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+8-jvmci-21.0-b06
+# VM invoker: /home/ubuntu/graalvm-ce-java11-21.0.0.2/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1 -Dpolyglot.engine.IterativePartialEscape=true -Dpolyglot.engine.BackgroundCompilation=false -Dgraalvm.locatorDisabled=true --upgrade-module-path=/home/ubuntu/enso/engine/runtime/build-cache/truffle-api.jar
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 5000 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_list
+
+# Run progress: 14.29% complete, ETA 01:38:31
+# Fork: 1 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 5167.812 ms/op
+# Warmup Iteration   2: 3897.591 ms/op
+# Warmup Iteration   3: 4067.835 ms/op
+# Warmup Iteration   4: 3003.911 ms/op
+# Warmup Iteration   5: 3198.001 ms/op
+# Warmup Iteration   6: 4278.304 ms/op
+# Warmup Iteration   7: 3822.613 ms/op
+# Warmup Iteration   8: 4242.956 ms/op
+# Warmup Iteration   9: 2973.374 ms/op
+# Warmup Iteration  10: 3489.230 ms/op
+Iteration   1: 7657.223 ms/op
+Iteration   2: 2612.103 ms/op
+Iteration   3: 3377.830 ms/op
+Iteration   4: 3356.403 ms/op
+Iteration   5: 4758.986 ms/op
+Iteration   6: 4410.559 ms/op
+Iteration   7: 4431.296 ms/op
+Iteration   8: 4417.589 ms/op
+Iteration   9: 4511.494 ms/op
+Iteration  10: 4338.011 ms/op
+
+# Run progress: 19.05% complete, ETA 01:26:02
+# Fork: 2 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 5435.428 ms/op
+# Warmup Iteration   2: 3838.447 ms/op
+# Warmup Iteration   3: 5066.922 ms/op
+# Warmup Iteration   4: 3044.989 ms/op
+# Warmup Iteration   5: 5031.598 ms/op
+# Warmup Iteration   6: 3863.821 ms/op
+# Warmup Iteration   7: 3967.028 ms/op
+# Warmup Iteration   8: 3852.236 ms/op
+# Warmup Iteration   9: 3980.511 ms/op
+# Warmup Iteration  10: 3866.831 ms/op
+Iteration   1: 6070.090 ms/op
+Iteration   2: 4402.361 ms/op
+Iteration   3: 4551.751 ms/op
+Iteration   4: 4437.492 ms/op
+Iteration   5: 4423.157 ms/op
+Iteration   6: 2617.706 ms/op
+Iteration   7: 3364.699 ms/op
+Iteration   8: 3458.603 ms/op
+Iteration   9: 4946.823 ms/op
+Iteration  10: 4357.404 ms/op
+
+# Run progress: 23.81% complete, ETA 01:17:16
+# Fork: 3 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 5196.421 ms/op
+# Warmup Iteration   2: 5030.543 ms/op
+# Warmup Iteration   3: 3833.276 ms/op
+# Warmup Iteration   4: 4400.137 ms/op
+# Warmup Iteration   5: 3952.791 ms/op
+# Warmup Iteration   6: 3837.640 ms/op
+# Warmup Iteration   7: 3461.456 ms/op
+# Warmup Iteration   8: 4084.337 ms/op
+# Warmup Iteration   9: 5002.430 ms/op
+# Warmup Iteration  10: 3134.092 ms/op
+Iteration   1: 6961.037 ms/op
+Iteration   2: 4425.749 ms/op
+Iteration   3: 4438.732 ms/op
+Iteration   4: 4422.137 ms/op
+Iteration   5: 4518.655 ms/op
+Iteration   6: 4376.841 ms/op
+Iteration   7: 2775.081 ms/op
+Iteration   8: 3377.704 ms/op
+Iteration   9: 3476.175 ms/op
+Iteration  10: 3683.762 ms/op
+
+
+Result "org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_list":
+  4298.582 ±(99.9%) 740.825 ms/op [Average]
+  (min, avg, max) = (2612.103, 4298.582, 7657.223), stdev = 1108.831
+  CI (99.9%): [3557.757, 5039.406] (assumes normal distribution)
+
+
+# JMH version: 1.23
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+8-jvmci-21.0-b06
+# VM invoker: /home/ubuntu/graalvm-ce-java11-21.0.0.2/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1 -Dpolyglot.engine.IterativePartialEscape=true -Dpolyglot.engine.BackgroundCompilation=false -Dgraalvm.locatorDisabled=true --upgrade-module-path=/home/ubuntu/enso/engine/runtime/build-cache/truffle-api.jar
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 5000 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_vector
+
+# Run progress: 28.57% complete, ETA 01:09:31
+# Fork: 1 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 1290.194 ms/op
+# Warmup Iteration   2: 937.246 ms/op
+# Warmup Iteration   3: 950.814 ms/op
+# Warmup Iteration   4: 1020.372 ms/op
+# Warmup Iteration   5: 1026.470 ms/op
+# Warmup Iteration   6: 1004.961 ms/op
+# Warmup Iteration   7: 1057.500 ms/op
+# Warmup Iteration   8: 1009.203 ms/op
+# Warmup Iteration   9: 1047.712 ms/op
+# Warmup Iteration  10: 1064.403 ms/op
+Iteration   1: 1040.937 ms/op
+Iteration   2: 1052.567 ms/op
+Iteration   3: 967.885 ms/op
+Iteration   4: 883.788 ms/op
+Iteration   5: 962.279 ms/op
+Iteration   6: 1058.565 ms/op
+Iteration   7: 955.135 ms/op
+Iteration   8: 998.206 ms/op
+Iteration   9: 1050.916 ms/op
+Iteration  10: 1038.974 ms/op
+
+# Run progress: 33.33% complete, ETA 01:01:34
+# Fork: 2 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 1274.083 ms/op
+# Warmup Iteration   2: 973.819 ms/op
+# Warmup Iteration   3: 1000.960 ms/op
+# Warmup Iteration   4: 919.640 ms/op
+# Warmup Iteration   5: 963.927 ms/op
+# Warmup Iteration   6: 1011.938 ms/op
+# Warmup Iteration   7: 992.486 ms/op
+# Warmup Iteration   8: 1049.541 ms/op
+# Warmup Iteration   9: 1013.827 ms/op
+# Warmup Iteration  10: 1016.547 ms/op
+Iteration   1: 1040.418 ms/op
+Iteration   2: 1056.770 ms/op
+Iteration   3: 1059.349 ms/op
+Iteration   4: 953.085 ms/op
+Iteration   5: 1054.272 ms/op
+Iteration   6: 1072.301 ms/op
+Iteration   7: 1079.112 ms/op
+Iteration   8: 976.208 ms/op
+Iteration   9: 858.022 ms/op
+Iteration  10: 966.800 ms/op
+
+# Run progress: 38.10% complete, ETA 00:54:52
+# Fork: 3 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 1171.843 ms/op
+# Warmup Iteration   2: 949.782 ms/op
+# Warmup Iteration   3: 924.703 ms/op
+# Warmup Iteration   4: 1022.818 ms/op
+# Warmup Iteration   5: 1051.004 ms/op
+# Warmup Iteration   6: 1000.619 ms/op
+# Warmup Iteration   7: 1010.860 ms/op
+# Warmup Iteration   8: 1062.654 ms/op
+# Warmup Iteration   9: 986.570 ms/op
+# Warmup Iteration  10: 1053.981 ms/op
+Iteration   1: 1074.989 ms/op
+Iteration   2: 961.890 ms/op
+Iteration   3: 1056.736 ms/op
+Iteration   4: 1080.982 ms/op
+Iteration   5: 912.774 ms/op
+Iteration   6: 902.248 ms/op
+Iteration   7: 982.906 ms/op
+Iteration   8: 1069.429 ms/op
+Iteration   9: 855.675 ms/op
+Iteration  10: 955.162 ms/op
+
+
+Result "org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_vector":
+  999.279 ±(99.9%) 46.213 ms/op [Average]
+  (min, avg, max) = (855.675, 999.279, 1080.982), stdev = 69.169
+  CI (99.9%): [953.066, 1045.492] (assumes normal distribution)
+
+
+# JMH version: 1.23
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+8-jvmci-21.0-b06
+# VM invoker: /home/ubuntu/graalvm-ce-java11-21.0.0.2/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1 -Dpolyglot.engine.IterativePartialEscape=true -Dpolyglot.engine.BackgroundCompilation=false -Dgraalvm.locatorDisabled=true --upgrade-module-path=/home/ubuntu/enso/engine/runtime/build-cache/truffle-api.jar
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 5000 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.sum
+
+# Run progress: 42.86% complete, ETA 00:48:58
+# Fork: 1 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 16.190 ms/op
+# Warmup Iteration   2: 13.057 ms/op
+# Warmup Iteration   3: 13.042 ms/op
+# Warmup Iteration   4: 13.039 ms/op
+# Warmup Iteration   5: 13.048 ms/op
+# Warmup Iteration   6: 13.049 ms/op
+# Warmup Iteration   7: 13.054 ms/op
+# Warmup Iteration   8: 13.047 ms/op
+# Warmup Iteration   9: 13.036 ms/op
+# Warmup Iteration  10: 13.042 ms/op
+Iteration   1: 13.041 ms/op
+Iteration   2: 13.042 ms/op
+Iteration   3: 13.045 ms/op
+Iteration   4: 13.048 ms/op
+Iteration   5: 13.048 ms/op
+Iteration   6: 13.056 ms/op
+Iteration   7: 13.044 ms/op
+Iteration   8: 13.047 ms/op
+Iteration   9: 13.044 ms/op
+Iteration  10: 13.041 ms/op
+
+# Run progress: 47.62% complete, ETA 00:43:29
+# Fork: 2 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 16.187 ms/op
+# Warmup Iteration   2: 13.047 ms/op
+# Warmup Iteration   3: 13.049 ms/op
+# Warmup Iteration   4: 13.042 ms/op
+# Warmup Iteration   5: 13.041 ms/op
+# Warmup Iteration   6: 13.047 ms/op
+# Warmup Iteration   7: 13.040 ms/op
+# Warmup Iteration   8: 13.050 ms/op
+# Warmup Iteration   9: 13.052 ms/op
+# Warmup Iteration  10: 13.046 ms/op
+Iteration   1: 13.074 ms/op
+Iteration   2: 13.043 ms/op
+Iteration   3: 13.048 ms/op
+Iteration   4: 13.090 ms/op
+Iteration   5: 13.061 ms/op
+Iteration   6: 13.050 ms/op
+Iteration   7: 13.043 ms/op
+Iteration   8: 13.045 ms/op
+Iteration   9: 13.061 ms/op
+Iteration  10: 13.056 ms/op
+
+# Run progress: 52.38% complete, ETA 00:38:30
+# Fork: 3 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 17.067 ms/op
+# Warmup Iteration   2: 13.092 ms/op
+# Warmup Iteration   3: 13.055 ms/op
+# Warmup Iteration   4: 13.077 ms/op
+# Warmup Iteration   5: 13.047 ms/op
+# Warmup Iteration   6: 13.048 ms/op
+# Warmup Iteration   7: 13.055 ms/op
+# Warmup Iteration   8: 13.053 ms/op
+# Warmup Iteration   9: 13.051 ms/op
+# Warmup Iteration  10: 13.059 ms/op
+Iteration   1: 13.055 ms/op
+Iteration   2: 13.051 ms/op
+Iteration   3: 13.042 ms/op
+Iteration   4: 13.051 ms/op
+Iteration   5: 13.053 ms/op
+Iteration   6: 13.054 ms/op
+Iteration   7: 13.048 ms/op
+Iteration   8: 13.050 ms/op
+Iteration   9: 13.049 ms/op
+Iteration  10: 13.051 ms/op
+
+
+Result "org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.sum":
+  13.051 ±(99.9%) 0.007 ms/op [Average]
+  (min, avg, max) = (13.041, 13.051, 13.090), stdev = 0.010
+  CI (99.9%): [13.044, 13.058] (assumes normal distribution)
+
+
+# JMH version: 1.23
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+8-jvmci-21.0-b06
+# VM invoker: /home/ubuntu/graalvm-ce-java11-21.0.0.2/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1 -Dpolyglot.engine.IterativePartialEscape=true -Dpolyglot.engine.BackgroundCompilation=false -Dgraalvm.locatorDisabled=true --upgrade-module-path=/home/ubuntu/enso/engine/runtime/build-cache/truffle-api.jar
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 5000 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_list
+
+# Run progress: 57.14% complete, ETA 00:33:52
+# Fork: 1 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 317.014 ms/op
+# Warmup Iteration   2: 206.587 ms/op
+# Warmup Iteration   3: 207.409 ms/op
+# Warmup Iteration   4: 203.780 ms/op
+# Warmup Iteration   5: 206.518 ms/op
+# Warmup Iteration   6: 204.293 ms/op
+# Warmup Iteration   7: 206.242 ms/op
+# Warmup Iteration   8: 204.540 ms/op
+# Warmup Iteration   9: 206.527 ms/op
+# Warmup Iteration  10: 207.131 ms/op
+Iteration   1: 205.011 ms/op
+Iteration   2: 203.907 ms/op
+Iteration   3: 204.383 ms/op
+Iteration   4: 209.344 ms/op
+Iteration   5: 204.662 ms/op
+Iteration   6: 203.571 ms/op
+Iteration   7: 204.255 ms/op
+Iteration   8: 209.334 ms/op
+Iteration   9: 203.940 ms/op
+Iteration  10: 204.796 ms/op
+
+# Run progress: 61.90% complete, ETA 00:30:18
+# Fork: 2 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 318.781 ms/op
+# Warmup Iteration   2: 206.700 ms/op
+# Warmup Iteration   3: 206.925 ms/op
+# Warmup Iteration   4: 203.630 ms/op
+# Warmup Iteration   5: 206.644 ms/op
+# Warmup Iteration   6: 204.208 ms/op
+# Warmup Iteration   7: 206.672 ms/op
+# Warmup Iteration   8: 203.360 ms/op
+# Warmup Iteration   9: 206.535 ms/op
+# Warmup Iteration  10: 203.632 ms/op
+Iteration   1: 209.337 ms/op
+Iteration   2: 204.092 ms/op
+Iteration   3: 203.523 ms/op
+Iteration   4: 203.942 ms/op
+Iteration   5: 209.540 ms/op
+Iteration   6: 203.520 ms/op
+Iteration   7: 203.354 ms/op
+Iteration   8: 204.296 ms/op
+Iteration   9: 209.641 ms/op
+Iteration  10: 203.312 ms/op
+
+# Run progress: 66.67% complete, ETA 00:26:39
+# Fork: 3 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 348.814 ms/op
+# Warmup Iteration   2: 206.407 ms/op
+# Warmup Iteration   3: 205.245 ms/op
+# Warmup Iteration   4: 203.805 ms/op
+# Warmup Iteration   5: 206.390 ms/op
+# Warmup Iteration   6: 206.070 ms/op
+# Warmup Iteration   7: 203.883 ms/op
+# Warmup Iteration   8: 206.422 ms/op
+# Warmup Iteration   9: 202.974 ms/op
+# Warmup Iteration  10: 206.255 ms/op
+Iteration   1: 202.571 ms/op
+Iteration   2: 203.645 ms/op
+Iteration   3: 204.364 ms/op
+Iteration   4: 208.958 ms/op
+Iteration   5: 202.122 ms/op
+Iteration   6: 203.670 ms/op
+Iteration   7: 209.476 ms/op
+Iteration   8: 203.363 ms/op
+Iteration   9: 202.994 ms/op
+Iteration  10: 203.603 ms/op
+
+
+Result "org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_list":
+  205.084 ±(99.9%) 1.659 ms/op [Average]
+  (min, avg, max) = (202.122, 205.084, 209.641), stdev = 2.483
+  CI (99.9%): [203.425, 206.743] (assumes normal distribution)
+
+
+# JMH version: 1.23
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+8-jvmci-21.0-b06
+# VM invoker: /home/ubuntu/graalvm-ce-java11-21.0.0.2/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1 -Dpolyglot.engine.IterativePartialEscape=true -Dpolyglot.engine.BackgroundCompilation=false -Dgraalvm.locatorDisabled=true --upgrade-module-path=/home/ubuntu/enso/engine/runtime/build-cache/truffle-api.jar
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 5000 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_tree
+
+# Run progress: 71.43% complete, ETA 00:22:56
+# Fork: 1 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 20.295 ms/op
+# Warmup Iteration   2: 32.523 ms/op
+# Warmup Iteration   3: 25.636 ms/op
+# Warmup Iteration   4: 25.946 ms/op
+# Warmup Iteration   5: 25.673 ms/op
+# Warmup Iteration   6: 25.915 ms/op
+# Warmup Iteration   7: 25.685 ms/op
+# Warmup Iteration   8: 25.658 ms/op
+# Warmup Iteration   9: 25.964 ms/op
+# Warmup Iteration  10: 25.600 ms/op
+Iteration   1: 25.709 ms/op
+Iteration   2: 26.241 ms/op
+Iteration   3: 25.793 ms/op
+Iteration   4: 25.639 ms/op
+Iteration   5: 25.644 ms/op
+Iteration   6: 25.614 ms/op
+Iteration   7: 26.250 ms/op
+Iteration   8: 25.820 ms/op
+Iteration   9: 25.555 ms/op
+Iteration  10: 25.600 ms/op
+
+# Run progress: 76.19% complete, ETA 00:19:10
+# Fork: 2 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 22.278 ms/op
+# Warmup Iteration   2: 25.892 ms/op
+# Warmup Iteration   3: 25.541 ms/op
+# Warmup Iteration   4: 25.938 ms/op
+# Warmup Iteration   5: 25.515 ms/op
+# Warmup Iteration   6: 25.878 ms/op
+# Warmup Iteration   7: 25.465 ms/op
+# Warmup Iteration   8: 25.836 ms/op
+# Warmup Iteration   9: 25.547 ms/op
+# Warmup Iteration  10: 25.806 ms/op
+Iteration   1: 25.830 ms/op
+Iteration   2: 25.432 ms/op
+Iteration   3: 25.506 ms/op
+Iteration   4: 25.525 ms/op
+Iteration   5: 26.224 ms/op
+Iteration   6: 25.598 ms/op
+Iteration   7: 25.532 ms/op
+Iteration   8: 25.575 ms/op
+Iteration   9: 26.099 ms/op
+Iteration  10: 25.607 ms/op
+
+# Run progress: 80.95% complete, ETA 00:15:23
+# Fork: 3 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 22.184 ms/op
+# Warmup Iteration   2: 25.984 ms/op
+# Warmup Iteration   3: 25.603 ms/op
+# Warmup Iteration   4: 26.029 ms/op
+# Warmup Iteration   5: 25.595 ms/op
+# Warmup Iteration   6: 26.000 ms/op
+# Warmup Iteration   7: 25.583 ms/op
+# Warmup Iteration   8: 25.915 ms/op
+# Warmup Iteration   9: 25.614 ms/op
+# Warmup Iteration  10: 25.876 ms/op
+Iteration   1: 25.796 ms/op
+Iteration   2: 25.569 ms/op
+Iteration   3: 25.573 ms/op
+Iteration   4: 25.925 ms/op
+Iteration   5: 25.974 ms/op
+Iteration   6: 25.643 ms/op
+Iteration   7: 25.625 ms/op
+Iteration   8: 25.665 ms/op
+Iteration   9: 26.319 ms/op
+Iteration  10: 25.705 ms/op
+
+
+Result "org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_tree":
+  25.753 ±(99.9%) 0.166 ms/op [Average]
+  (min, avg, max) = (25.432, 25.753, 26.319), stdev = 0.249
+  CI (99.9%): [25.587, 25.919] (assumes normal distribution)
+
+
+# JMH version: 1.23
+# VM version: JDK 11.0.10, OpenJDK 64-Bit Server VM, 11.0.10+8-jvmci-21.0-b06
+# VM invoker: /home/ubuntu/graalvm-ce-java11-21.0.0.2/bin/java
+# VM options: -XX:+UnlockExperimentalVMOptions -XX:+EnableJVMCIProduct -XX:-UnlockExperimentalVMOptions -XX:ThreadPriorityPolicy=1 -Dpolyglot.engine.IterativePartialEscape=true -Dpolyglot.engine.BackgroundCompilation=false -Dgraalvm.locatorDisabled=true --upgrade-module-path=/home/ubuntu/enso/engine/runtime/build-cache/truffle-api.jar
+# Warmup: 10 iterations, 10 s each
+# Measurement: 10 iterations, 5000 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_vector
+
+# Run progress: 85.71% complete, ETA 00:11:34
+# Fork: 1 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 440.470 ms/op
+# Warmup Iteration   2: 275.352 ms/op
+# Warmup Iteration   3: 276.270 ms/op
+# Warmup Iteration   4: 274.049 ms/op
+# Warmup Iteration   5: 274.037 ms/op
+# Warmup Iteration   6: 277.658 ms/op
+# Warmup Iteration   7: 273.519 ms/op
+# Warmup Iteration   8: 278.303 ms/op
+# Warmup Iteration   9: 272.899 ms/op
+# Warmup Iteration  10: 277.803 ms/op
+Iteration   1: 273.432 ms/op
+Iteration   2: 277.960 ms/op
+Iteration   3: 279.611 ms/op
+Iteration   4: 274.940 ms/op
+Iteration   5: 272.304 ms/op
+Iteration   6: 274.657 ms/op
+Iteration   7: 273.722 ms/op
+Iteration   8: 282.333 ms/op
+Iteration   9: 273.887 ms/op
+Iteration  10: 273.724 ms/op
+
+# Run progress: 90.48% complete, ETA 00:07:44
+# Fork: 2 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 508.562 ms/op
+# Warmup Iteration   2: 276.146 ms/op
+# Warmup Iteration   3: 276.125 ms/op
+# Warmup Iteration   4: 274.547 ms/op
+# Warmup Iteration   5: 276.048 ms/op
+# Warmup Iteration   6: 272.711 ms/op
+# Warmup Iteration   7: 274.266 ms/op
+# Warmup Iteration   8: 275.914 ms/op
+# Warmup Iteration   9: 272.306 ms/op
+# Warmup Iteration  10: 278.675 ms/op
+Iteration   1: 271.544 ms/op
+Iteration   2: 273.613 ms/op
+Iteration   3: 279.951 ms/op
+Iteration   4: 274.131 ms/op
+Iteration   5: 272.486 ms/op
+Iteration   6: 276.008 ms/op
+Iteration   7: 272.863 ms/op
+Iteration   8: 280.836 ms/op
+Iteration   9: 277.100 ms/op
+Iteration  10: 306.430 ms/op
+
+# Run progress: 95.24% complete, ETA 00:03:52
+# Fork: 3 of 3
+OpenJDK 64-Bit Server VM warning: -XX:ThreadPriorityPolicy=1 may require system level permission, e.g., being the root user. If the necessary permission is not possessed, changes to priority will be silently ignored.
+# Warmup Iteration   1: 501.438 ms/op
+# Warmup Iteration   2: 275.316 ms/op
+# Warmup Iteration   3: 278.173 ms/op
+# Warmup Iteration   4: 273.758 ms/op
+# Warmup Iteration   5: 276.804 ms/op
+# Warmup Iteration   6: 274.054 ms/op
+# Warmup Iteration   7: 277.336 ms/op
+# Warmup Iteration   8: 274.041 ms/op
+# Warmup Iteration   9: 277.588 ms/op
+# Warmup Iteration  10: 274.474 ms/op
+Iteration   1: 276.099 ms/op
+Iteration   2: 281.164 ms/op
+Iteration   3: 274.103 ms/op
+Iteration   4: 273.774 ms/op
+Iteration   5: 275.004 ms/op
+Iteration   6: 280.013 ms/op
+Iteration   7: 274.454 ms/op
+Iteration   8: 273.271 ms/op
+Iteration   9: 273.248 ms/op
+Iteration  10: 279.406 ms/op
+
+
+Result "org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_vector":
+  276.736 ±(99.9%) 4.257 ms/op [Average]
+  (min, avg, max) = (271.544, 276.736, 306.430), stdev = 6.372
+  CI (99.9%): [272.478, 280.993] (assumes normal distribution)
+
+
+# Run complete. Total time: 01:21:36
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                             Mode  Cnt     Score     Error  Units
+MicroBenchmarks.alloc_full_tree       avgt   30   320.899 ± 749.870  ms/op
+MicroBenchmarks.alloc_list            avgt   30  4298.582 ± 740.825  ms/op
+MicroBenchmarks.alloc_vector          avgt   30   999.279 ±  46.213  ms/op
+MicroBenchmarks.sum                   avgt   30    13.051 ±   0.007  ms/op
+MicroBenchmarksStructures.sum_list    avgt   30   205.084 ±   1.659  ms/op
+MicroBenchmarksStructures.sum_tree    avgt   30    25.753 ±   0.166  ms/op
+MicroBenchmarksStructures.sum_vector  avgt   30   276.736 ±   4.257  ms/op
+
+Benchmark result is saved to results.csv
