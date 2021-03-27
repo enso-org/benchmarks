@@ -10,14 +10,15 @@ void print_header() {
   std::cout << "language, benchmark, run_id, time" << std::endl;
 }
 
-void measure(std::function<void(void)> act, std::string label, int64_t num_iters) {
+template <typename T> void measure(std::function<T(void)> act, std::string label, int64_t num_iters) {
   for (int64_t it_num = 0; it_num < num_iters; it_num++) {
     auto x1 = std::chrono::steady_clock::now();
-    act();
+    auto res = act();
     auto x2 = std::chrono::steady_clock::now();
     std::chrono::nanoseconds diff = x2 - x1;
     double millis = diff.count() / 1.0e6;
     std::cout << "cpp, " << label << ", " << it_num << ", " << millis << std::endl;
+    std::cerr << res << std::endl;
   }
 }
 
@@ -102,27 +103,27 @@ int64_t sum_tree(Tree* tree) {
 
 int main() {
   print_header();
-  int64_t size = std::stoi(std::getenv("BENCH_SIZE"));
-  int64_t depth = std::stoi(std::getenv("BENCH_DEPTH"));
+  volatile int64_t size = std::stoi(std::getenv("BENCH_SIZE"));
+  volatile int64_t depth = std::stoi(std::getenv("BENCH_DEPTH"));
   int64_t n_iters = std::stoi(std::getenv("BENCH_ITER"));
 
   std::cerr << "Size = " << size << std::endl;
   std::cerr << "Depth = " << depth << std::endl;
   std::cerr << "Iterations = " << n_iters << std::endl;
 
-  measure([]() { std::this_thread::sleep_for(std::chrono::milliseconds(100)); }, "100ms", 10);
+  measure<int64_t>([]() { std::this_thread::sleep_for(std::chrono::milliseconds(100)); return 0; }, "100ms", 10);
 
-  measure([&]() { sum(size); }, "sum", n_iters);
+  measure<int64_t>([&]() { return sum(size); }, "sum", n_iters);
 
-  measure([&]() { alloc_vector(size); }, "alloc_vector", n_iters);
+  measure<int64_t*>([&]() { return alloc_vector(size); }, "alloc_vector", n_iters);
   auto vec = alloc_vector(size);
-  measure([&]() { sum_vector(vec, size); }, "sum_vector", n_iters);
+  measure<int64_t>([&]() { return sum_vector(vec, size); }, "sum_vector", n_iters);
 
-  measure([&]() { alloc_list(size); }, "alloc_list", n_iters);
+  measure<Cons*>([&]() { return alloc_list(size); }, "alloc_list", n_iters);
   auto list = alloc_list(size);
-  measure([&]() { sum_list(list); }, "sum_list", n_iters);
+  measure<int64_t>([&]() { return sum_list(list); }, "sum_list", n_iters);
 
-  measure([&]() { alloc_full_tree(depth); }, "alloc_full_tree", n_iters);
+  measure<Tree*>([&]() { return alloc_full_tree(depth); }, "alloc_full_tree", n_iters);
   auto tree = alloc_full_tree(depth);
-  measure([&]() { sum_tree(tree); }, "sum_tree", n_iters);
+  measure<int64_t>([&]() { return sum_tree(tree); }, "sum_tree", n_iters);
 }

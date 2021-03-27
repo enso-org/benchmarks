@@ -9,7 +9,7 @@ def measure(act, label, num_iters):
         act()
         x2 = time.perf_counter()
         diff = (x2 - x1)  * 1000.0
-        print("python, " + label + ", " + str(it_num) + ", " + str(diff))
+        print("python, " + label + ", " + str(it_num) + ", " + str(diff), flush=True)
 
 def sum_bench(n):
     acc = 0

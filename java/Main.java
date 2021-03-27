@@ -8,10 +8,11 @@ public class Main {
     public static void measure(Supplier<?> act, String label, long num_iters) {
         for (long it_num = 0; it_num < num_iters; it_num++) {
             double x1 = System.nanoTime();
-            act.get();
+            var res = act.get();
             double x2 = System.nanoTime();
             double diff = (x2 - x1) / 1.0e6;
             System.out.println("java, " + label + ", " + it_num + ", " + diff);
+            System.err.println(res);
         }
     }
 
