@@ -1,0 +1,62 @@
+from Standard.Base import all
+
+sum : Integer -> Integer
+sum n =
+    go acc i =
+        if i > n then acc else
+            @Tail_Call go acc+i i+1
+    go 0 1
+
+alloc_vector : Integer -> Vector
+alloc_vector n =
+    Vector.new n (x -> x)
+
+sum_vector : Vector -> Integer
+sum_vector vec =
+    go acc i =
+        if i >= vec.length then acc else
+            @Tail_Call go (acc + vec.at i) i+1
+    go 0 0
+
+type List
+    type Cons head tail
+    type Nil
+
+alloc_list : Integer -> List
+alloc_list n =
+    go acc n =
+        if n == 0 then Cons 0 acc else
+            @Tail_Call go (Cons n acc) n-1
+    go Nil n
+
+sum_list : List -> Integer
+sum_list list =
+    go acc list = case list of
+        Nil -> acc
+        Cons h t ->
+            @Tail_Call go acc+h t
+    go 0 list
+
+type Tree
+    type Leaf
+    type Node left elem right
+
+alloc_full_tree : Integer -> Tree
+alloc_full_tree depth =
+    go ix d =
+        if d == 0 then [ix, Leaf] else
+            resL = go ix d-1
+            v = resL.first
+            resR = go resL.first+1 d-1
+            [resR.first, Node resL.second v resR.second]
+    res = go 0 depth
+    res.second
+
+sum_tree : Tree -> Integer
+sum_tree tree = case tree of
+    Leaf -> 0
+    Node l e r -> here.sum_tree l + e + here.sum_tree r
+
+ten_million = 10000000
+million = 1000000
+tree_depth = 17

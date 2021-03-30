@@ -1,0 +1,8 @@
+from Standard.Base import all
+
+import Microbenchmarks.Helpers
+import Microbenchmarks.Implementations as Impl
+
+main =
+    vec = Impl.alloc_vector Impl.million
+    Helpers.bench Impl.sum_vector vec "sum_vector"

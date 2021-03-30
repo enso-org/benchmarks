@@ -1,8 +1,25 @@
+from Standard.Base import all
+import Standard.Test.Bench as StdBench
+
 polyglot java import java.lang.Thread
 polyglot java import java.lang.Integer
 
 sleep millis =
     Thread.sleep millis
 
-parse_int str =
-    Integer.parseInt str
+measure_function = function -> argument -> label -> iter_size -> num_iters ->
+    single_call = _ ->
+        x1 = System.nano_time
+        Runtime.no_inline_with_arg function argument
+        x2 = System.nano_time
+        x2 - x1
+    iteration = it_num ->
+        act_it_num = num_iters - it_num
+        res = iter_size.times single_call
+        avg = StdBench.avg_list res
+        fmt = (avg / 1000000).format "%.3f"
+        IO.println "enso,"+label+","+act_it_num.to_text+","+fmt.to_text
+    num_iters.times iteration
+
+bench function argument label =
+    here.measure_function function argument label 10 3
