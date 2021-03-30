@@ -5,18 +5,23 @@ sum n =
     go acc i =
         if i > n then acc else
             @Tail_Call go acc+i i+1
-    go 0 1
+    res = go 0 1
+    res
+
+type Point x y
 
 alloc_vector : Integer -> Vector
 alloc_vector n =
-    Vector.new n (x -> x)
+    Vector.new n (x -> Point x x)
 
 sum_vector : Vector -> Integer
 sum_vector vec =
     go acc i =
         if i >= vec.length then acc else
-            @Tail_Call go (acc + vec.at i) i+1
-    go 0 0
+            v = vec.at i
+            @Tail_Call go (acc + v.x + v.y) i+1
+    res = go 0 0
+    res
 
 type List
     type Cons head tail
@@ -25,17 +30,19 @@ type List
 alloc_list : Integer -> List
 alloc_list n =
     go acc n =
-        if n == 0 then Cons 0 acc else
-            @Tail_Call go (Cons n acc) n-1
-    go Nil n
+        if n == 0 then Cons (Point 0 0) acc else
+            @Tail_Call go (Cons (Point n n) acc) n-1
+    res = go Nil n
+    res
 
 sum_list : List -> Integer
 sum_list list =
     go acc list = case list of
         Nil -> acc
         Cons h t ->
-            @Tail_Call go acc+h t
-    go 0 list
+            @Tail_Call go acc+h.x+h.y t
+    res = go 0 list
+    res
 
 type Tree
     type Leaf
@@ -43,19 +50,21 @@ type Tree
 
 alloc_full_tree : Integer -> Tree
 alloc_full_tree depth =
-    go ix d =
-        if d == 0 then [ix, Leaf] else
-            resL = go ix d-1
-            v = resL.first
-            resR = go resL.first+1 d-1
-            [resR.first, Node resL.second v resR.second]
-    res = go 0 depth
-    res.second
+    go remaining_depth =
+        if remaining_depth == 0 then Leaf else
+            l = go remaining_depth-1
+            i = State.get Integer
+            State.put Integer i+1
+            e = Point i i
+            r = go remaining_depth-1
+            Node l e r
+    res = State.run Integer 0 <| go depth
+    res
 
 sum_tree : Tree -> Integer
 sum_tree tree = case tree of
     Leaf -> 0
-    Node l e r -> here.sum_tree l + e + here.sum_tree r
+    Node l e r -> here.sum_tree l + e.x + e.y + here.sum_tree r
 
 ten_million = 10000000
 million = 1000000

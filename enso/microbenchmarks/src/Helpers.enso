@@ -24,4 +24,4 @@ measure_function = function -> argument -> label -> iter_size -> num_iters ->
     num_iters.times iteration
 
 bench function argument label =
-    here.measure_function function argument label 10 100
+    here.measure_function function argument label 50 50
