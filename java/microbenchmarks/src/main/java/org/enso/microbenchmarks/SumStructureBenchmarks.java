@@ -11,15 +11,16 @@ public class SumStructureBenchmarks {
 
   @State(Scope.Thread)
   public static class StructureState extends BaseBenchmarks.BaseState {
-    long[] vec = null;
-    Cons list = null;
-    Tree tree = null;
+
+    Point<Long>[] vec = null;
+    Cons<Point<Long>> list = null;
+    Tree<Point<Long>> tree = null;
 
     @Setup(Level.Trial)
     public void doSetup() {
-      vec = new long[size];
-      list = Implementations.allocList(size);
-      tree = Implementations.allocFullTree(depth);
+      vec = Implementations.allocVector(million);
+      list = Implementations.allocList(million);
+      tree = Implementations.allocFullTree(tree_depth);
     }
   }
 

@@ -10,15 +10,20 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
 public class Main {
+
   public static void main(String... args) throws RunnerException {
     Options opts = new OptionsBuilder()
         .include(".*.Bench.*")
+        .shouldDoGC(true)
         .mode(Mode.AverageTime)
-        .warmupIterations(10)
-        .measurementIterations(10)
+//        .warmupIterations(10)
+//        .measurementIterations(10)
+//        .forks(3)
+        .warmupIterations(1)
+        .measurementIterations(1)
+        .forks(1)
         .measurementTime(TimeValue.milliseconds(5000))
         .timeUnit(TimeUnit.MILLISECONDS)
-        .forks(3)
         .result("results.csv")
         .resultFormat(ResultFormatType.CSV)
         .build();

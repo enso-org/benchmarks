@@ -1,11 +1,11 @@
 package org.enso.microbenchmarks;
 
-public class Cons {
+public class Cons<A> {
 
-  public final long head;
+  public final A head;
   public final Cons tail;
 
-  public Cons(long head, Cons tail) {
+  public Cons(A head, Cons tail) {
     this.head = head;
     this.tail = tail;
   }

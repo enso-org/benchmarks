@@ -1,11 +1,11 @@
 package org.enso.microbenchmarks;
 
-public class Tree {
+public class Tree<A> {
 
   public final Tree left, right;
-  public final long elem;
+  public final A elem;
 
-  public Tree(Tree left, long elem, Tree right) {
+  public Tree(Tree left, A elem, Tree right) {
     this.left = left;
     this.elem = elem;
     this.right = right;

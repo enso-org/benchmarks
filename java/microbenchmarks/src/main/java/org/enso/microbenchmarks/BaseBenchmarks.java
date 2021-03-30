@@ -41,31 +41,32 @@ public class BaseBenchmarks {
   @State(Scope.Thread)
   public static class BaseState {
 
-    public int size = 10000000;
-    public int depth = 18;
+    public int ten_million = 10_000_000;
+    public int million = 1_000_000;
+    public int tree_depth = 17;
   }
 
   @Benchmark
   public void sum(Blackhole blackhole, BaseState state) {
-    var res = Implementations.sum(state.size);
+    var res = Implementations.sum(state.ten_million);
     blackhole.consume(res);
   }
 
   @Benchmark
   public void alloc_vector(Blackhole blackhole, BaseState state) {
-    var res = Implementations.allocVector(state.size);
+    var res = Implementations.allocVector(state.million);
     blackhole.consume(res);
   }
 
   @Benchmark
   public void alloc_list(Blackhole blackhole, BaseState state) {
-    var res = Implementations.allocList(state.size);
+    var res = Implementations.allocList(state.million);
     blackhole.consume(res);
   }
 
   @Benchmark
   public void alloc_full_tree(Blackhole blackhole, BaseState state) {
-    var res = Implementations.allocFullTree(state.depth);
+    var res = Implementations.allocFullTree(state.tree_depth);
     blackhole.consume(res);
   }
 }
