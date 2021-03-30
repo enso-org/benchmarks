@@ -1,0 +1,8 @@
+"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
+"org.enso.microbenchmarks.BaseBenchmarks.alloc_full_tree","avgt",1,30,1.914627,0.023254,"ms/op"
+"org.enso.microbenchmarks.BaseBenchmarks.alloc_list","avgt",1,30,68.433480,10.279262,"ms/op"
+"org.enso.microbenchmarks.BaseBenchmarks.alloc_vector","avgt",1,30,49.593890,0.675363,"ms/op"
+"org.enso.microbenchmarks.BaseBenchmarks.sum","avgt",1,30,2.734102,0.001240,"ms/op"
+"org.enso.microbenchmarks.SumStructureBenchmarks.sum_list","avgt",1,30,6.756459,0.132361,"ms/op"
+"org.enso.microbenchmarks.SumStructureBenchmarks.sum_tree","avgt",1,30,1.900161,0.238654,"ms/op"
+"org.enso.microbenchmarks.SumStructureBenchmarks.sum_vector","avgt",1,30,5.296833,0.024553,"ms/op"
