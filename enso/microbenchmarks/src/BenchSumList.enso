@@ -1,0 +1,8 @@
+from Standard.Base import all
+
+import Microbenchmarks.Helpers
+import Microbenchmarks.Implementations as Impl
+
+main =
+    l = Impl.alloc_list Impl.million
+    Helpers.bench Impl.sum_list l "sum_list"

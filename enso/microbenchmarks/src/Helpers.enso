@@ -1,5 +1,5 @@
 from Standard.Base import all
-import Standard.Test.Bench as StdBench
+import Standard.Test.Bench as Std_Bench
 
 polyglot java import java.lang.Thread
 polyglot java import java.lang.Integer
@@ -8,18 +8,20 @@ sleep millis =
     Thread.sleep millis
 
 measure_function = function -> argument -> label -> iter_size -> num_iters ->
-    single_call = _ ->
-        x1 = System.nano_time
-        Runtime.no_inline_with_arg function argument
-        x2 = System.nano_time
-        x2 - x1
+    iterate = i ->
+        if i <= 0 then Nothing else
+            Runtime.no_inline_with_arg function argument
+            @Tail_Call iterate i-1
     iteration = it_num ->
         act_it_num = num_iters - it_num
-        res = iter_size.times single_call
-        avg = StdBench.avg_list res
-        fmt = (avg / 1000000).format "%.3f"
-        IO.println "enso,"+label+","+act_it_num.to_text+","+fmt.to_text
+        x1 = System.nano_time
+        iterate iter_size
+        x2 = System.nano_time
+        avg = (x2 - x1) / iter_size
+        fmt = (avg / 1000000).format "%.3f" . replace "," "."
+        IO.println "enso,"+label+","+act_it_num.to_text+","+fmt
+        Runtime.gc
     num_iters.times iteration
 
 bench function argument label =
-    here.measure_function function argument label 10 3
+    here.measure_function function argument label 10 100

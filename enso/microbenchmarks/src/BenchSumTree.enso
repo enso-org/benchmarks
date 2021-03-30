@@ -1,0 +1,8 @@
+from Standard.Base import all
+
+import Microbenchmarks.Helpers
+import Microbenchmarks.Implementations as Impl
+
+main =
+    t = Impl.alloc_full_tree Impl.tree_depth
+    Helpers.bench Impl.sum_tree t "sum_tree"
