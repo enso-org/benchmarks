@@ -15,6 +15,7 @@ enso --version >> results/versions.txt
 
 echo "Java:" >> results/versions.txt
 java --version >> results/versions.txt
+mvn --version >> results/versions.txt
 
 echo "Python:" >> results/versions.txt
 python3 --version >> results/versions.txt
