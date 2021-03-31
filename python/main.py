@@ -1,6 +1,18 @@
 import time, os
 from implementations import *
 
+def print_header():
+    print("language,benchmark,run_id,time")
+
+def measure(act, label, iter_size, num_iters):
+    for it_num in range(num_iters):
+        x1 = time.perf_counter()
+        for _ in range(iter_size):
+            act()
+        x2 = time.perf_counter()
+        diff = (x2 - x1)  * 1000.0 / iter_size
+        print("python, " + label + ", " + str(it_num) + ", " + str(diff), flush=True)
+
 if __name__ == "__main__":
     print_header()
     n_iters = 20
