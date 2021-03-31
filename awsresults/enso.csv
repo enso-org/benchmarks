@@ -1,8 +1,0 @@
-"Benchmark","Mode","Threads","Samples","Score","Score Error (99.9%)","Unit"
-"org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_full_tree","avgt",1,30,320.898810,749.870109,"ms/op"
-"org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_list","avgt",1,30,4298.581719,740.824568,"ms/op"
-"org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.alloc_vector","avgt",1,30,999.279343,46.212894,"ms/op"
-"org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarks.sum","avgt",1,30,13.050992,0.006816,"ms/op"
-"org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_list","avgt",1,30,205.084142,1.658866,"ms/op"
-"org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_tree","avgt",1,30,25.752960,0.166272,"ms/op"
-"org.enso.interpreter.bench.benchmarks.semantic.MicroBenchmarksStructures.sum_vector","avgt",1,30,276.735559,4.257302,"ms/op"
