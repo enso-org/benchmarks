@@ -15,7 +15,7 @@ function measure(act, label, iter_size, num_iters) {
 }
 
 function bench(act, label) {
-    measure(act, label, 10, 2);
+    measure(act, label, 50, 50);
 }
 
 function arg_int() {

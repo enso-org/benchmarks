@@ -8,10 +8,17 @@ function sum(n) {
     return acc;
 }
 
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
 function alloc_vector(n) {
     let array = new Int32Array(n);
     for (let i = 0; i < n; ++i) {
-        array[i] = i;
+        array[i] = new Point(i, i);
     }
     return array;
 }
@@ -20,7 +27,8 @@ function sum_vector(vec) {
     let N = vec.length;
     let acc = 0;
     for (let i = 0; i < N; ++i) {
-        acc += vec[i];
+        let v = vec[i];
+        acc += v.x + v.y;
     }
     return acc;
 }
@@ -35,7 +43,7 @@ class Cons {
 function alloc_list(n) {
     let res = null;
     for (let i = n; i >= 0; i--) {
-        res = new Cons(i, res);
+        res = new Cons(new Point(i, i), res);
     }
     return res;
 }
@@ -43,7 +51,8 @@ function alloc_list(n) {
 function sum_list(list) {
     let acc = 0;
     while (list != null) {
-        acc += list.head;
+        let h = list.head;
+        acc += h.x + h.y;
         list = list.tail;
     }
     return acc;
@@ -64,7 +73,8 @@ function alloc_full_tree(depth) {
             return null;
         } else {
             let l = go(remaining_depth - 1);
-            let e = ix++;
+            let i = ix++;
+            let e = new Point(i, i);
             let r = go(remaining_depth - 1);
             return new Tree(l, e, r);
         }
@@ -77,8 +87,9 @@ function sum_tree(tree) {
         return 0;
     } else {
         let l = sum_tree(tree.left);
+        let e = tree.elem;
         let r = sum_tree(tree.right);
-        return l + tree.elem + r;
+        return l + e.x + e.y + r;
     }
 }
 
