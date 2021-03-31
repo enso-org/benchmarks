@@ -3,3 +3,4 @@
 results/
 *.csv
 target/
+__pycache__

@@ -1,0 +1,9 @@
+from Standard.Base import all
+
+import Microbenchmarks.Implementations as Impl
+
+main =
+    IO.println <| Impl.sum Impl.ten_million
+    IO.println <| Impl.sum_vector <| Impl.alloc_vector Impl.million
+    IO.println <| Impl.sum_list <| Impl.alloc_list Impl.million
+    IO.println <| Impl.sum_tree <| Impl.alloc_full_tree Impl.tree_depth

@@ -16,7 +16,7 @@ class Point {
 }
 
 function alloc_vector(n) {
-    let array = new Int32Array(n);
+    let array = new Array(n);
     for (let i = 0; i < n; ++i) {
         array[i] = new Point(i, i);
     }
