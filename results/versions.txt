@@ -1,0 +1,27 @@
+Enso:
+Enso Launcher
+Version:    0.2.10-SNAPSHOT
+Built with: scala-2.13.5 for GraalVM 21.0.0.2
+Built from: wip/rw/benchmark-inlining-helper* @ c1cf27519587c7043ca47f40024a00e2be57ee82
+Built on:   Linux (amd64)
+Current default Enso engine: 
+Enso Compiler and Runtime
+Version:    0.2.10-SNAPSHOT
+Built with: scala-2.13.5 for GraalVM 21.0.0.2
+Built from: wip/rw/benchmark-inlining-helper* @ c1cf27519587c7043ca47f40024a00e2be57ee82
+Running on: OpenJDK 64-Bit Server VM, GraalVM Community, JDK 11.0.10+8-jvmci-21.0-b06
+            Linux 5.4.0-1038-aws (amd64)
+
+Java:
+openjdk 11.0.10 2021-01-19
+OpenJDK Runtime Environment (build 11.0.10+9-Ubuntu-0ubuntu1.20.04)
+OpenJDK 64-Bit Server VM (build 11.0.10+9-Ubuntu-0ubuntu1.20.04, mixed mode, sharing)
+[1mApache Maven 3.6.3[m
+Maven home: /usr/share/maven
+Java version: 11.0.10, vendor: Ubuntu, runtime: /usr/lib/jvm/java-11-openjdk-amd64
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "5.4.0-1038-aws", arch: "amd64", family: "unix"
+Python:
+Python 3.8.5
+JS:
+v15.12.0
