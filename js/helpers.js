@@ -11,6 +11,7 @@ function measure(act, label, iter_size, num_iters) {
         let diff = (diff_seconds * 1000.0) + (diff_nanos / 1.0e6);
         let avg = diff / iter_size;
         console.log("js, " + label + ", " + it_num + ", " + avg.toFixed(3));
+        global.gc();
     }
 }
 

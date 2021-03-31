@@ -1,4 +1,4 @@
-import time, os
+import time, os, gc
 from implementations import *
 
 def print_header():
@@ -12,6 +12,7 @@ def measure(act, label, iter_size, num_iters):
         x2 = time.perf_counter()
         diff = (x2 - x1)  * 1000.0 / iter_size
         print("python, " + label + ", " + str(it_num) + ", " + str(diff), flush=True)
+        gc.collect()
 
 if __name__ == "__main__":
     print_header()
