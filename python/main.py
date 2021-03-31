@@ -83,8 +83,8 @@ def sum_tree(tree):
 
 if __name__ == "__main__":
     print_header()
-    n_iters = 30
-    iter_size = 50
+    n_iters = 20
+    iter_size = 10
 
     ten_million = 10000000
     million = 1000000
