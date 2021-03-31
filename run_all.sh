@@ -1,27 +1,52 @@
 #!/bin/bash
 set -xe
 
-export BENCH_SIZE=1000000
-export BENCH_DEPTH=17
-#export BENCH_ITER=1000
+# Prerequisites:
+# - installed Java and Maven (`mvn` on PATH)
+# - installed latest Enso engine with a launcher (`enso` on PATH)
+# - installed CPython 3.8+ (`python3` on PATH)
+# - installed Node JS (`node` on PATH)
 
 rm -rf results
 mkdir results
 
-# cd java
-# javac Main.java
-# java Main | tee ../results/java.csv
-# cd ..
+echo "Enso:" >> results/versions.txt
+enso --version >> results/versions.txt
 
-# cd cpp
-# g++ main.cpp -o main.x64
-# ./main.x64 | tee ../results/cpp.csv
-# cd ..
+echo "Java:" >> results/versions.txt
+java --version >> results/versions.txt
 
-export BENCH_ITER=500
-enso run enso/microbenchmarks | tee results/enso.csv
+echo "Python:" >> results/versions.txt
+python3 --version >> results/versions.txt
 
-export BENCH_ITER=100
-python3 python/main.py | tee results/python.csv
+echo "JS:" >> results/versions.txt
+node --version >> results/versions.txt
 
-# node js/main.js | tee results/js.csv
+cat results/versions.txt
+
+echo "Benchmarking Enso"
+pushd enso/microbenchmarks/
+./run.sh
+popd
+cp enso/microbenchmarks/results.csv results/enso.csv
+
+echo "Benchmarking Java"
+pushd java/microbenchmarks/
+mvn verify
+java -cp target/benchmarks.jar org.enso.microbenchmarks.Main
+popd
+cp java/microbenchmarks/results.csv results/java.csv
+
+echo "Benchmarking Python"
+pushd python/
+python3 main.py | tee results.csv
+popd
+cp python/results.csv results/python.csv
+
+echo "Benchmarking JS"
+pushd js/
+./run.sh
+popd
+cp js/results.csv results/js.csv
+
+echo "Done"
