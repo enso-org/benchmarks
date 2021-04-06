@@ -343,6 +343,9 @@ not affect the results. The amount of iterations was smaller than Enso or JS
 because the benchmarks for Python took more time, so the groups could be smaller
 and there was no need for additional warmup iterations.
 
+In all the languages, the Garbage Collector was triggered between each group of
+iterations, to minimize the impact of garbage collection on the timing.
+
 ## How To Run The Benchmarks
 
 To run the benchmarks yourself you need to ensure that the dependencies as
