@@ -1,17 +1,20 @@
 # Microbenchmarks
 
-This section describes the comparison of performance of Enso and other popular
-languages (currently that includes Java, JS and Python).
+This document describes the implementation and results of benchmarks that compare Enso and the following popular languages:
+
+- JavaScript
+- Java
+- Python
 
 ## Results
 
-Below follows a short description of each benchmark (including references to the
+Below is a short description of each benchmark (including references to the
 source code) and a presentation of its results.
 
 ### Sum
 
-The goal of this benchmark is to measure the base performance of a loop with
-arithmetic, by summing numbers from one to ten million.
+The goal of this benchmark is to measure the base performance of a loop performing
+arithmetic, by summing the numbers from one to ten million.
 
 The Enso implementation used tail recursion, as shown below.
 
@@ -25,12 +28,12 @@ sum n =
     res
 ```
 
-In other languages, this was implemented using a while loop. See the
+In other languages, this was implemented using a while loop. Please see the
 implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L1-L7),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L1-L9)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L5-L13).
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L5-L13) for more details.
 
 <img align="left" src="images/sum.svg" width="50%">
 
@@ -53,7 +56,7 @@ and
 This benchmark measures the time it takes to allocate a vector (a linear array)
 and fill it with complex objects. The objects used in this and all following
 benchmarks were 2-dimensional points represented using a simple structure (an
-atom or a class, depending on a language).
+atom or a class, depending on the language).
 
 The created vectors consist of one million elements.
 
@@ -71,7 +74,7 @@ See the implementations in
 and Java
 ([the allocation function](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L15-L22)
 and the
-[`Point` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Point.java)).
+[`Point` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Point.java)) for more details.
 
 <img align="left" src="images/alloc_vector.svg" width="50%">
 
@@ -88,7 +91,7 @@ and the
 
 ### Vector Sum
 
-This benchmark measures the time it takes to sum elements of a vector. The
+This benchmark measures the time it takes to sum the elements of a vector. The
 vector is the same as created by the benchmark above - it computes `Point`s and
 the sum of both of their coordinates is computed.
 
@@ -107,7 +110,7 @@ See the implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L17-L21),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L26-L34)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L24-L31).
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L24-L31) for more details.
 
 <img align="left" src="images/sum_vector.svg" width="50%">
 
@@ -153,7 +156,7 @@ the implementations in
 and Java
 ([the allocation function](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L33-L39)
 and the
-[`Cons` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Cons.java)).
+[`Cons` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Cons.java)) for more details.
 
 <img align="left" src="images/alloc_list.svg" width="50%">
 
@@ -170,7 +173,7 @@ and the
 
 ### List Sum
 
-This benchmark measures the time it takes to sum elements of a linked list as
+This benchmark measures the time it takes to sum the elements of a linked list as
 created above (it is analogous to the Vector Sum benchmark). It checks the
 general performance of list traversal.
 
@@ -189,7 +192,7 @@ See the implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L34-L40),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L51-L59)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L41-L48).
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L41-L48) for more details.
 
 <img align="left" src="images/sum_list.svg" width="50%">
 
@@ -208,7 +211,7 @@ and
 
 This benchmark measures the time it takes to allocate a full binary tree.
 
-This one and its corresponding summing benchmark compare the performance of
+This, and its corresponding summing benchmark, compare the performance of
 creating and traversing more complex data structures using non-tail recursion
 (because in the other benchmarks mostly relied on while-loops in imperative
 languages and tail-recursion in Enso). Of course it is possible to avoid
@@ -220,7 +223,7 @@ in each node and shows that Enso's `State` monad has comparable performance to
 regular mutable state of other languages.
 
 The allocated trees have a depth of 17, which means that they consist of 2^17 =
-131072 elements (including the leafs).
+131072 elements (including the leaves).
 
 ```
 type Tree
@@ -251,7 +254,7 @@ Java). See the implementations in
 and Java
 ([the allocator](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L50-L78)
 and the
-[`Tree` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java)).
+[`Tree` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java)) for more details.
 
 <img align="left" src="images/alloc_full_tree.svg" width="50%">
 
@@ -268,7 +271,7 @@ and the
 
 ### Tree Sum
 
-This benchmark measures the time it takes to sum elements of a binary tree. It
+This benchmark measures the time it takes to sum the elements of a binary tree. It
 checks the performance of traversal of more complex data structures and
 recursion.
 
@@ -283,7 +286,7 @@ See the implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L62-L68),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L85-L94)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L80-L88).
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L80-L88) for more details.
 
 <img align="left" src="images/sum_tree.svg" width="50%">
 
@@ -386,14 +389,14 @@ programming languages. In particular, Enso can call R code and use R libraries.
 Under the hood, it uses the [FastR](https://github.com/oracle/fastr)
 implementation developed by Oracle, running on the GraalVM, which is
 significantly faster than the standard GNU-R implementation. We utilize a wide
-set of custom optimizations that make sure the Enso - R interoperability runs
+set of custom optimizations that make sure the Enso-R interoperability runs
 without performance bottlenecks.
 
 > The plot and table below have been adapted from the
 > [FastR benchmarks](https://medium.com/graalvm/faster-r-with-fastr-4b8db0e0dceb#4ab6).
 > The original plot was showing speedup, but to keep the same format as other
 > plots in this repository, we have computed the `Relative Time` for each
-> implementation by inversing the speedup.
+> implementation by calculating the inverse of the speedup.
 
 <img align="left" src="images/fastr.svg" width="50%">
 
