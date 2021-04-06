@@ -1,7 +1,5 @@
 # Microbenchmarks
 
-> This README is currently a work in progress.
-
 This section describes the comparison of performance of Enso and other popular
 languages (currently that includes Java, JS and Python).
 
@@ -380,6 +378,30 @@ If you are running Ubuntu 20.04 LTS, Python and Java can be installed using
 `apt install python3 openjdk-11-jre`. To install the specified NodeJS version we
 recommend using [`nvm`](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-# Enso-R vs Gnu-R
+# Enso-R vs GNU-R
 
-TODO
+Enso includes polyglot functionality that allows interoperability with other
+programming languages. In particular, Enso can call R code and use R libraries.
+
+Under the hood, it uses the [FastR](https://github.com/oracle/fastr)
+implementation developed by Oracle, running on the GraalVM, which is
+significantly faster than the standard GNU-R implementation. We utilize a wide
+set of custom optimizations that make sure the Enso - R interoperability runs
+without performance bottlenecks.
+
+> The plot and table below have been adapted from the
+> [FastR benchmarks](https://medium.com/graalvm/faster-r-with-fastr-4b8db0e0dceb#4ab6).
+> The original plot was showing speedup, but to keep the same format as other
+> plots in this repository, we have computed the `Relative Time` for each
+> implementation by inversing the speedup.
+
+<img align="left" src="images/fastr.svg" width="50%">
+
+<br/><br/>
+
+| Implementation            | Relative Time |
+| :------------------------ | ------------: |
+| Enso-R (using GraalVM EE) |     0.0270783 |
+| Enso-R (using GraalVM CE) |     0.0450857 |
+| GNU-R+Fortran             |      0.229358 |
+| GNU-R 3.4.0               |             1 |
