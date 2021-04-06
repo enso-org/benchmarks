@@ -261,6 +261,15 @@ Python benchmarks are similarily timed in groups, each group consists of 10 iter
 
 ## How To Run The Benchmarks
 
+To run the benchmarks yourself you need to ensure that the dependencies as [described above](#additional-notes) are installed and that the following executables are available on your system PATH: `enso`, `java`, `python3` and `node`.
+
+The automated script is tailored to Linux but it should also work on macOS, possibly with minor modifications.
+
+Enso can be downloaded from [the releases page](https://github.com/enso-org/enso/releases). It is best to download the `enso-bundle-...` package for your operating system, unpack it and install using `./bin/enso install distribution --bundle-install-mode=copy` which should place `enso` on your PATH, at least for standard configurations which include `~/.local/bin` in the PATH>. It is best to download the `enso-bundle-... package for your operating system, unpack it and install using `enso install distribution`, which should place `enso` on your PATH, at least for standard configurations which include `~/.local/bin in the PATH, for non-standard configurations, it may need to be added manually.
+You may need to modify the `enso-version` in [`enso/microbenchmarks/package.yaml`](./enso/microbenchmarks/package.yaml) to match the version that you have downloaded. Alternatively, if you want to use exactly the same version as was used in the benchmarks, you can checkout [the relevant commit](https://github.com/enso-org/enso/commit/444ae39d2872ef2b05ff58b71e500a81be13aac8), set it up as explained [in the documentation](https://github.com/enso-org/enso/blob/444ae39d2872ef2b05ff58b71e500a81be13aac8/docs/CONTRIBUTING.md) and build using `sbt "buildEngineDistribution; buildLauncherDistribution; makeBundles"`.
+
+If you are running Ubuntu 20.04 LTS, Python and Java can be installed using `apt install python3 openjdk-11-jre`. To install the specified NodeJS version we recommend using [`nvm`](https://github.com/nvm-sh/nvm#installing-and-updating).
+
 # Enso-R vs Gnu-R
 
 TODO
