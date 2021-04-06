@@ -197,7 +197,7 @@ alloc_full_tree depth =
 ```
 
 In other languages, the leaf is represented as `null` (or `None`), similarly as explained in [List Allocation](#list-allocation). The state is implemented using a mutable variable within the closure of a helper function (in case of Python and JS) and using mutable member elements within a helper class (in case of Java).
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L42-L60), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L61-L83) and Java ([the allocation function](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L50-L78) and the [`Tree` class](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java)).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L42-L60), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L61-L83) and Java ([the allocator](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L50-L78) and the [`Tree` class](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java)).
 
 <img align="left" src="images/alloc_full_tree.svg" width="50%">
 
@@ -239,6 +239,25 @@ See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/
 <br/>
 
 ## Additional Notes
+
+Language implementations used for each benchmark:
+
+- Enso 0.2.10-SNAPSHOT
+- Java OpenJDK 11.0.10
+- NodeJS v15.12.0
+- Python 3.8.5
+
+The benchmarks were run on an Amacon EC2 m5.xlarge instance, running Ubuntu Server 20.04 LTS.
+
+Each benchmark for Enso has been ran in a separate fork of the JVM and multiple warmup iterations have been performed to ensure that the JIT optimizations were triggered.
+Benchmark iterations were being run in groups of 50 and a time measurement was done before and after each group. This was done to increase the precision of measurements for benchmarks that run in very short time. The final time was computed by averaging these group averages over a set of 25 iterations (excluding 25 warmup iterations). The errors are computed by taking the 0.005th and 0.995th quantile and ensuring that the 99% of values lie within the `error` of the computed average.
+Moreover, timing of a function that just sleeps for 10ms has been benchmarked to verify empirically the error of time measurements. After warmup, the error was much less than 1ms so it should not affect the results significantly.
+
+A very similar approach was done for JavaScript (since the NodeJS runtime also does just in time optimizations) - here also each benchmark was run in a separate fork and 25 warmup and 25 regular iterations in groups of 50 were performed.
+
+For Java, the preferred Java Microbenchmark Harness was used. There were 10 warmup iterations that take 10s each and 10 measurement iterations taking 5s, each benchmark was executed in 3 separate fork. Here the timings of each measurement iteration are again averaged and the error is estimated using a standard error estimator with 99.9% confidence.
+
+Python benchmarks are similarily timed in groups, each group consists of 10 iterations and 20 groups were run. These benchmarks run in a single fork and skip warmup, because CPython does not do any JIT optimizations, so this should not affect the results. The amount of iterations was smaller than Enso or JS because the benchmarks for Python took more time, so the groups could be smaller and there was no need for additional warmup iterations.
 
 ## How To Run The Benchmarks
 
