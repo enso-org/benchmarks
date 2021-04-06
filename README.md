@@ -25,7 +25,7 @@ sum n =
 ```
 
 In other languages, this was implemented using a while loop.
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L1-L7), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L1-L9) and [Java](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L5-L13).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L1-L7), [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L1-L9) and [Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L5-L13).
 
 <img align="left" src="images/sum.svg" width="50%">
 
@@ -56,7 +56,7 @@ alloc_vector n =
     Vector.new n (x -> Point x x)
 ```
 
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L9-L15), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L11-L24) and Java ([the allocation function](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L15-L22) and the [`Point` class](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Point.java)).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L9-L15), [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L11-L24) and Java ([the allocation function](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L15-L22) and the [`Point` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Point.java)).
 
 <img align="left" src="images/alloc_vector.svg" width="50%">
 
@@ -86,7 +86,7 @@ sum_vector vec =
     res
 ```
 
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L17-L21), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L26-L34) and [Java](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L24-L31).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L17-L21), [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L26-L34) and [Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L24-L31).
 
 <img align="left" src="images/sum_vector.svg" width="50%">
 
@@ -122,7 +122,7 @@ alloc_list n =
 ```
 
 In other languages the list is implemented as a structure containing the head and a pointer to the tail and the empty list is represented as `null` (or `None` in case of Python) to avoid, usually more expensive, `instanceof` checks.
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L23-L32), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L36-L49) and Java ([the allocation function](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L33-L39) and the [`Cons` class](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Cons.java)).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L23-L32), [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L36-L49) and Java ([the allocation function](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L33-L39) and the [`Cons` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Cons.java)).
 
 <img align="left" src="images/alloc_list.svg" width="50%">
 
@@ -152,7 +152,7 @@ sum_list list =
     res
 ```
 
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L34-L40), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L51-L59) and [Java](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L41-L48).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L34-L40), [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L51-L59) and [Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L41-L48).
 
 <img align="left" src="images/sum_list.svg" width="50%">
 
@@ -197,7 +197,7 @@ alloc_full_tree depth =
 ```
 
 In other languages, the leaf is represented as `null` (or `None`), similarly as explained in [List Allocation](#list-allocation). The state is implemented using a mutable variable within the closure of a helper function (in case of Python and JS) and using mutable member elements within a helper class (in case of Java).
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L42-L60), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L61-L83) and Java ([the allocator](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L50-L78) and the [`Tree` class](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java)).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L42-L60), [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L61-L83) and Java ([the allocator](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L50-L78) and the [`Tree` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java)).
 
 <img align="left" src="images/alloc_full_tree.svg" width="50%">
 
@@ -223,7 +223,7 @@ sum_tree tree = case tree of
     Node l e r -> here.sum_tree l + e.x + e.y + here.sum_tree r
 ```
 
-See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/python/implementations.py#L62-L68), [JS](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/js/implementations.js#L85-L94) and [Java](https://github.com/enso-org/benchmarks/blob/wip/rw/initial-microbenchmarks/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L80-L88).
+See the implementations in [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L62-L68), [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L85-L94) and [Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L80-L88).
 
 <img align="left" src="images/sum_tree.svg" width="50%">
 
