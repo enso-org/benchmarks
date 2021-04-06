@@ -1,6 +1,7 @@
 # Microbenchmarks
 
-This document describes the implementation and results of benchmarks that compare Enso and the following popular languages:
+This document describes the implementation and results of benchmarks that
+compare Enso and the following popular languages:
 
 - JavaScript
 - Java
@@ -13,8 +14,8 @@ source code) and a presentation of its results.
 
 ### Sum
 
-The goal of this benchmark is to measure the base performance of a loop performing
-arithmetic, by summing the numbers from one to ten million.
+The goal of this benchmark is to measure the base performance of a loop
+performing arithmetic, by summing the numbers from one to ten million.
 
 The Enso implementation used tail recursion, as shown below.
 
@@ -33,7 +34,8 @@ implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L1-L7),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L1-L9)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L5-L13) for more details.
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L5-L13)
+for more details.
 
 <img align="left" src="images/sum.svg" width="50%">
 
@@ -74,7 +76,8 @@ See the implementations in
 and Java
 ([the allocation function](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L15-L22)
 and the
-[`Point` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Point.java)) for more details.
+[`Point` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Point.java))
+for more details.
 
 <img align="left" src="images/alloc_vector.svg" width="50%">
 
@@ -110,7 +113,8 @@ See the implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L17-L21),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L26-L34)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L24-L31) for more details.
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L24-L31)
+for more details.
 
 <img align="left" src="images/sum_vector.svg" width="50%">
 
@@ -156,7 +160,8 @@ the implementations in
 and Java
 ([the allocation function](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L33-L39)
 and the
-[`Cons` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Cons.java)) for more details.
+[`Cons` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Cons.java))
+for more details.
 
 <img align="left" src="images/alloc_list.svg" width="50%">
 
@@ -173,8 +178,8 @@ and the
 
 ### List Sum
 
-This benchmark measures the time it takes to sum the elements of a linked list as
-created above (it is analogous to the Vector Sum benchmark). It checks the
+This benchmark measures the time it takes to sum the elements of a linked list
+as created above (it is analogous to the Vector Sum benchmark). It checks the
 general performance of list traversal.
 
 ```
@@ -192,7 +197,8 @@ See the implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L34-L40),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L51-L59)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L41-L48) for more details.
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L41-L48)
+for more details.
 
 <img align="left" src="images/sum_list.svg" width="50%">
 
@@ -254,7 +260,8 @@ Java). See the implementations in
 and Java
 ([the allocator](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L50-L78)
 and the
-[`Tree` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java)) for more details.
+[`Tree` class](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Tree.java))
+for more details.
 
 <img align="left" src="images/alloc_full_tree.svg" width="50%">
 
@@ -271,8 +278,8 @@ and the
 
 ### Tree Sum
 
-This benchmark measures the time it takes to sum the elements of a binary tree. It
-checks the performance of traversal of more complex data structures and
+This benchmark measures the time it takes to sum the elements of a binary tree.
+It checks the performance of traversal of more complex data structures and
 recursion.
 
 ```
@@ -286,7 +293,8 @@ See the implementations in
 [Python](https://github.com/enso-org/benchmarks/blob/main/python/implementations.py#L62-L68),
 [JS](https://github.com/enso-org/benchmarks/blob/main/js/implementations.js#L85-L94)
 and
-[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L80-L88) for more details.
+[Java](https://github.com/enso-org/benchmarks/blob/main/java/microbenchmarks/src/main/java/org/enso/microbenchmarks/Implementations.java#L80-L88)
+for more details.
 
 <img align="left" src="images/sum_tree.svg" width="50%">
 
